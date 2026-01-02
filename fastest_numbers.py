@@ -55,7 +55,7 @@ pemdas_count = 6
 def base_syllables(n):
     if n < 20:
         return one_names[n][0][1], one_names[n][0][0], one_names[n][1][1], one_names[n][1][0], 0, 1
-    elif n < 100:
+    if n < 100:
         n_mod = n % 10
         n_div = n // 10
         if n % 10 == 0: 
@@ -69,36 +69,36 @@ def base_syllables(n):
                 0,
                 2
             )
-    else: 
-        large_index = 0
-        while (large_names[large_index+1][2] <= n):
-            large_index += 1
-
-        n_mod = n % large_names[large_index][2]
-        n_div = n // large_names[large_index][2]
-
-        if n_mod == 0:
-            return (
-                number_names[n_div]["syllables"][1] + large_names[large_index][1],
-                number_names[n_div]["names"][1] + " " + large_names[large_index][0],
-                number_names[n_div]["syllables"][1] + large_names[large_index][1],
-                number_names[n_div]["names"][1] + " " + large_names[large_index][0] + "th",
-                large_names[large_index][3] + number_names[n_div]["zeroes"],
-                large_names[large_index][3] + number_names[n_div]["digits"]
-            )
         
-        connect_word, connect_syllables = " ", 0
-        # if n_mod < 100:
-        #     connect_word, connect_syllables = " and ", 1
+    large_index = 0
+    while (large_names[large_index+1][2] <= n):
+        large_index += 1
 
+    n_mod = n % large_names[large_index][2]
+    n_div = n // large_names[large_index][2]
+
+    if n_mod == 0:
         return (
-            number_names[n_div]["syllables"][1] + large_names[large_index][1] + connect_syllables + number_names[n_mod]["syllables"][1],
-            number_names[n_div]["names"][1] + " " + large_names[large_index][0] + connect_word + number_names[n_mod]["names"][1],
-            number_names[n_div]["syllables"][1] + large_names[large_index][1] + connect_syllables + number_names[n_mod]["syllables"][0],
-            number_names[n_div]["names"][1] + " " + large_names[large_index][0] + connect_word + number_names[n_mod]["names"][0],
-            number_names[n_mod]["zeroes"],
+            number_names[n_div]["syllables"][1] + large_names[large_index][1],
+            number_names[n_div]["names"][1] + " " + large_names[large_index][0],
+            number_names[n_div]["syllables"][1] + large_names[large_index][1],
+            number_names[n_div]["names"][1] + " " + large_names[large_index][0] + "th",
+            large_names[large_index][3] + number_names[n_div]["zeroes"],
             large_names[large_index][3] + number_names[n_div]["digits"]
         )
+    
+    connect_word, connect_syllables = " ", 0
+    # if n_mod < 100:
+    #     connect_word, connect_syllables = " and ", 1
+
+    return (
+        number_names[n_div]["syllables"][1] + large_names[large_index][1] + connect_syllables + number_names[n_mod]["syllables"][1],
+        number_names[n_div]["names"][1] + " " + large_names[large_index][0] + connect_word + number_names[n_mod]["names"][1],
+        number_names[n_div]["syllables"][1] + large_names[large_index][1] + connect_syllables + number_names[n_mod]["syllables"][0],
+        number_names[n_div]["names"][1] + " " + large_names[large_index][0] + connect_word + number_names[n_mod]["names"][0],
+        number_names[n_mod]["zeroes"],
+        large_names[large_index][3] + number_names[n_div]["digits"]
+    )
     
 
 
@@ -321,3 +321,4 @@ def numbers_out(number_names, file_name):
 
 fast_numbers = number_names_generator(10000,100000)
 numbers_out(fast_numbers, 'fastest_numbers.csv')
+
