@@ -210,8 +210,10 @@ def number_names_generator(leave_point,max_number):
                                     + op["suffix"])
                         
                         new_equation = number_names[left_value]["equations"][op["pemdas_left"]] 
-                        if op["id"] == "^":
-                            new_equation += " " + superscripts[right_value]
+                        if op["id"] == "^" and new_equation == number_names[left_value]["equations"][1]:
+                            new_equation = new_equation + " " + superscripts[right_value]
+                        elif op["id"] == "^":
+                            new_equation = "(" + new_equation + ") " + superscripts[right_value]
                         else:
                             if op["id"] == "fraction":
                                 new_equation += " / "
@@ -246,7 +248,12 @@ def number_names_generator(leave_point,max_number):
                     continue
 
                 new_name = number_names[input_value]["names"][op["pemdas_input"]] + op["text"]
-                new_equation = number_names[input_value]["equations"][op["pemdas_input"]] + " " + op["id"]
+                new_equation = number_names[input_value]["equations"][op["pemdas_input"]]
+                if new_equation == number_names[input_value]["equations"][1]:
+                    new_equation = new_equation + " " + op["id"]
+                else:
+                    new_equation = "(" + new_equation + ") " + op["id"]
+                    
                 for u in range(op["pemdas_result"],pemdas_count):
                     if number_names[op_output]["syllables"][u] >= s:
                         number_names[op_output]["names"][u] = new_name
@@ -324,4 +331,5 @@ def numbers_out(number_names, file_name):
 
 fast_numbers = number_names_generator(10000,100000)
 numbers_out(fast_numbers, 'fastest_numbers.csv')
+
 
