@@ -444,10 +444,11 @@ def get_output(op,left_value,right_value=0):
 
 def numbers_out(number_names, file_name):
     with open(file_name,"w",encoding="utf-8") as f:
-        f.write(f"{'#Silben':<3}{'Wert':<6}{'Gleichung':<25}Name\n")
+        #f.write(f"{'#Silben':<3}{'Wert':<6}{'Gleichung':<25}Name\n")
         for l in number_names:
-           #f.write(str(l["value"]) + "," + l["names"][-1] + "," + l["equations"][-1] + "," + str(l["syllables"][-1])  +"\n")
-            f.write(f"#{l['syllables'][-1]:<3}  {l['value']:<6}  =  {l['equations'][-1]:<25}  {l['names'][-1]}\n")
+            f.write(str(l["value"]) + "," + l["names"][-1] + "," + l["equations"][-1] + "," + str(l["syllables"][-1])  +"\n")
+            #f.write(f"#{l['syllables'][-1]:<3}  {l['value']:<6}  =  {l['equations'][-1]:<25}  {l['names'][-1]}\n")
 
-fast_numbers = number_names_generator(100000,1001000)
-numbers_out(fast_numbers, "fastest_numbers_de.txt")
+fast_numbers = number_names_generator(10000,100000)
+numbers_out(fast_numbers, "fastest_numbers_de.csv")
+#numbers_out(fast_numbers, "fastest_numbers_de.txt")
