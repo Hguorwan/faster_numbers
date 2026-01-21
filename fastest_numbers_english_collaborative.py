@@ -2,7 +2,7 @@ import math
 
 
 one_names = [
-    [["zero", 2], ["zeroeth", 2]],
+    [["nought", 1], ["", 0]],
     [["one", 1], ["first", 1]],
     [["two", 1], ["second", 2]],
     [["three", 1], ["third", 1]],
@@ -349,4 +349,5 @@ fast_numbers = number_names_generator(10000,100000)
 number_names = []
 fast_numbers_nonsilly = number_names_generator(10000,100000,False)
 numbers_out(fast_numbers_nonsilly, 'fastest_numbers.csv', fast_numbers)
+
 
