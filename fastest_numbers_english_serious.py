@@ -34,7 +34,6 @@ ten_names = [
     [["fifty", 2], ["fiftieth", 3],["fiftie", 2]],
     [["sixty", 2], ["sixtieth", 3],["sixtie", 2]],
     [["sventy", 2], ["sventieth", 3],["sventie", 2]],
-    [["seventy", 3], ["seventieth", 4],["seventie", 3]],
     [["eighty", 2], ["eightieth", 3],["eightie", 2]],
     [["ninety", 2], ["ninetieth", 3],["ninetie", 2]],
 ]
@@ -762,4 +761,5 @@ generate_fibs(upper_limit)
 generate_primes(upper_limit)
 eff_names = number_names_generator(10000,upper_limit)
 numbers_out(eff_names, 'fastest_numbers_serious.csv')
+
 
