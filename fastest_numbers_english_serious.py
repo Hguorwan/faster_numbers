@@ -44,7 +44,7 @@ ten_names = [
 large_names = [
     ["cent",1,100,2,"hundredth",2],
     ["thou",1,1000,3,"thousandth",2],
-    ["myr",1,10000,5],
+    ["wan",1,10000,5],
     ["mil",1,1000000,6,"millionth",2],
     ["bil",1,1000000000,9,"billionth",2],
     ["tril",1,1,12],
@@ -761,5 +761,6 @@ generate_fibs(upper_limit)
 generate_primes(upper_limit)
 eff_names = number_names_generator(10000,upper_limit)
 numbers_out(eff_names, 'fastest_numbers_serious.csv')
+
 
 
